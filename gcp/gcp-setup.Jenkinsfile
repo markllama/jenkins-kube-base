@@ -195,7 +195,7 @@ node(TARGET_NODE) {
             sh "ssh-keygen -R ${test_instance.publicIpAddress}"
             
             sshagent([GCP_INSTANCE_PRIVATE_KEY_NAME]) {
-                def max_tries=10
+                def max_tries=20
                 def trynum = 0
                 while(test_instance.sshStatus("uptime") != 0 && trynum < max_tries) {
                     echo "SSH try number ${trynum} of ${max_tries}"
@@ -207,7 +207,7 @@ node(TARGET_NODE) {
 
         stage("prepare for testing") {
             sshagent([GCP_INSTANCE_PRIVATE_KEY_NAME]) {
-                test_instance.sshStatus("sudo yum -y install pexpect")
+                status = test_instance.sshStatus("sudo yum -y install pexpect")
             }
         }
     }
