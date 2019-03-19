@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 
-@Library('awscli')
-import com.redhat.awscli.*;
+@Library('cloud-cli')
+import com.redhat.cloud-cli.*;
 
 properties(
     [
@@ -18,7 +18,7 @@ properties(
                     name: 'TARGET_NODE',
                     description: 'Jenkins agent node',
                     $class: 'hudson.model.StringParameterDefinition',
-                    defaultValue: 'awscli'
+                    defaultValue: 'cloud-cli'
                 ],
                 [
                     name: 'OWNER_NUMBER',

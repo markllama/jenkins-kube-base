@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-@Library('awscli')
+@Library('cloud-cli')
 import com.redhat.gcloud.*;
 
 properties(
