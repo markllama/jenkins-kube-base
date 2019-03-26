@@ -113,6 +113,7 @@ node(TARGET_NODE) {
 
         Instance instance
         stage("create instance") {
+            echo "Creating instance from image - Id: ${images[0].ImageId}, Name: ${images[0].Name}"
             instance = Instance.create(
                 images[0].ImageId,
                 subnet.SubnetId,
