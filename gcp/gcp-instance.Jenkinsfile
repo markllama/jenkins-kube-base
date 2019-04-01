@@ -158,8 +158,8 @@ node(TARGET_NODE) {
         currentBuild.result = setup.result
 
         // grab the returned INSTANCE_ID from the build job variables
-        GCP_INSTANCE_ID = setupJob.getBuildVariables().INSTANCE_ID
-        GCP_INSTANCE_DNS_NAME = setupJob.getBuildVariables().INSTANCE_PUBLIC_DNS_NAME
+        GCP_INSTANCE_ID = setup.getBuildVariables().INSTANCE_ID
+        GCP_INSTANCE_DNS_NAME = setup.getBuildVariables().INSTANCE_PUBLIC_DNS_NAME
         echo "GCP_INSTANCE_ID: ${GCP_INSTANCE_ID}\nGCP_INSTANCE_DNS_NAME: ${GCP_INSTANCE_DNS_NAME}"
 
 
@@ -172,7 +172,7 @@ node(TARGET_NODE) {
 
     stage("delete instance") {
         echo "Deleting instance"
-        setup = build(
+        teardown = build(
             job: 'gcp-teardown',
             propagate: true,
             parameters: [
