@@ -194,7 +194,7 @@ node(TARGET_NODE) {
 
             sh "ssh-keygen -R ${test_instance.publicIpAddress}"
 
-            accessible = False
+            accessible = false
             sshagent([GCP_INSTANCE_PRIVATE_KEY_NAME]) {
                 def max_tries=20
                 def trynum = 0
