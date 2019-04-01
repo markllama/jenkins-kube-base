@@ -198,15 +198,15 @@ node(TARGET_NODE) {
                 def max_tries=20
                 def trynum = 0
                 
-                accessible = test_instance.sshStatus("uptime")
-                while(!accessible && trynum < max_tries) {
+                status = test_instance.sshStatus("uptime")
+                while(status != 0 && trynum < max_tries) {
                     echo "SSH try number ${trynum} of ${max_tries}"
                     sleep(30)
                     trynum += 1
-                    accessible = test_instance.sshStatus("uptime")
+                    status = test_instance.sshStatus("uptime")
                 }
 
-                if (accessible) {
+                if (status == 0) {
                     echo "Host access successfule after ${trynum} tries"
                 } else {
                     error("failed to access GCP instance ${GC_INSTANCE_NAME}")
