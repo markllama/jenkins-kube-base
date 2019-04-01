@@ -160,13 +160,15 @@ node(TARGET_NODE) {
         // grab the returned INSTANCE_ID from the build job variables
         GCP_INSTANCE_ID = setup.getBuildVariables().INSTANCE_ID
         GCP_INSTANCE_DNS_NAME = setup.getBuildVariables().INSTANCE_PUBLIC_DNS_NAME
-        echo "GCP_INSTANCE_ID: ${GCP_INSTANCE_ID}\nGCP_INSTANCE_DNS_NAME: ${GCP_INSTANCE_DNS_NAME}"
+        echo "GCP_INSTANCE_ID: ${GCP_INSTANCE_ID}"
+        echo "GCP_INSTANCE_DNS_NAME: ${GCP_INSTANCE_DNS_NAME}"
 
 
     }
 
     stage("actions") {
-        echo "GCP_INSTANCE_ID: ${GCP_INSTANCE_ID}\nGCP_INSTANCE_DNS_NAME: ${GCP_INSTANCE_DNS_NAME}"
+        echo "GCP_INSTANCE_ID: ${GCP_INSTANCE_ID}"
+        echo "GCP_INSTANCE_DNS_NAME: ${GCP_INSTANCE_DNS_NAME}"
         
     }
 
