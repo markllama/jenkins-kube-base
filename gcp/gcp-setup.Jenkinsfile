@@ -193,14 +193,22 @@ node(TARGET_NODE) {
             echo "Wait for SSH to new instance"
 
             sh "ssh-keygen -R ${test_instance.publicIpAddress}"
-            
+
+            accessible = False
             sshagent([GCP_INSTANCE_PRIVATE_KEY_NAME]) {
                 def max_tries=20
                 def trynum = 0
-                while(test_instance.sshStatus("uptime") != 0 && trynum < max_tries) {
+                
+                while(trynum < max_tries) {
                     echo "SSH try number ${trynum} of ${max_tries}"
+                    accessible = test_instance.sshStatus("uptime")
+                    if (accessible) { break }
                     sleep(30)
                     trynum += 1
+                }
+
+                if (!accessible) {
+                    error("failed to access GCP instance ${GC_INSTANCE_NAME}")
                 }
             }
         }
