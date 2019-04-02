@@ -65,7 +65,7 @@ properties(
                     name: 'MINISHIFT_VERSION',
                     description: 'What version of minishift to use (no v prefix!)',
                     $class: 'hudson.model.StringParameterDefinition',
-                    defaultValue: '1.28.0'
+                    defaultValue: '1.33.0'
                 ],
                 [
                     name: 'MINISHIFT_GITHUB_API_TOKEN',
@@ -79,6 +79,12 @@ properties(
                     $class: 'hudson.model.StringParameterDefinition',
                     defaultValue: "none"
                 ],
+                [
+                    name: 'OPENSHIFT_VERSION',
+                    description: 'What version of open to use (no v prefix!)',
+                    $class: 'hudson.model.StringParameterDefinition',
+                    defaultValue: '3.11.0'
+                ],                
                 [
                     name: 'PERSIST',
                     description: 'leave the minishift service in place',
